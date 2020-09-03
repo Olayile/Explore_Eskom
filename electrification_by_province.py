@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib as plt
+import plotly.express as px
 
 st.title("Electrification by Province")
 st.markdown(" ## Build python functions that can analyse Eskom data")
@@ -57,5 +58,9 @@ def five_num_summary(items):
 
     return dict_five_num_summary
 
-(ebp_df['Financial Year (1 April - 30 March)'], list(province_tuple),  linewidth=2, markersize=12)
-plt.show()
+# Plot the province of choice
+
+
+fig = px.scatter(ebp_df, x="Financial Year (1 April - 30 March)", y= province, width=800, height=400)
+
+st.write(fig)
